@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Yaldevi', system-ui, sans-serif;
+    background: #fafaf7;
+    color: #1f2937;
+    /* prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+  }
+  body.lang-si { font-family: 'Noto Sans Sinhala', sans-serif; }
+  body.lang-ta { font-family: 'Noto Sans Tamil', sans-serif; }
+  /* larger tap targets on mobile */
+  button { -webkit-tap-highlight-color: transparent; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #f3f4f6; }
+  ::-webkit-scrollbar-thumb { background: #4ade80; border-radius: 4px; }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply bg-green-700 text-white font-bold rounded-xl px-4 py-2.5 text-sm transition-all
+           hover:bg-green-800 active:scale-95 cursor-pointer border-0 touch-manipulation;
+  }
+  .btn-outline {
+    @apply bg-transparent text-white border border-white/40 font-bold rounded-xl px-4 py-2.5
+           text-sm transition-all hover:bg-white/10 active:scale-95 cursor-pointer touch-manipulation;
+  }
+
+  /* ── Form elements ── */
+  .input-field {
+    @apply w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm font-sans text-gray-800
+           bg-white outline-none transition-all focus:border-green-500 focus:ring-2 focus:ring-green-500/10;
+    /* prevent iOS zoom on input focus */
+    font-size: max(16px, 0.875rem);
+  }
+  .select-field {
+    @apply w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm font-sans text-gray-800
+           bg-white outline-none cursor-pointer focus:border-green-500;
+    font-size: max(16px, 0.875rem);
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white border border-gray-200 rounded-2xl overflow-hidden cursor-pointer
+           transition-all duration-200 active:scale-[0.98]
+           sm:hover:shadow-lg sm:hover:-translate-y-0.5 sm:hover:border-green-200;
+  }
+
+  /* ── Filter chips ── */
+  .chip {
+    @apply px-3 py-1.5 rounded-full border-2 border-gray-200 bg-white text-gray-600 text-xs
+           font-semibold cursor-pointer transition-all active:scale-95
+           hover:border-green-400 hover:text-green-700 whitespace-nowrap touch-manipulation;
+  }
+  .chip-active { @apply bg-green-700 border-green-700 text-white; }
+
+  /* ── Badges ── */
+  .badge-fresh     { @apply bg-green-50  text-green-700 border border-green-200  px-2 py-0.5 rounded-full text-[10px] font-bold; }
+  .badge-certified { @apply bg-amber-50  text-amber-600 border border-amber-100  px-2 py-0.5 rounded-full text-[10px] font-bold; }
+  .badge-urgent    { @apply bg-red-50    text-red-600   border border-red-200    px-2 py-0.5 rounded-full text-[10px] font-bold; }
+
+  /* ── Nav buttons (desktop) ── */
+  .nav-btn        { @apply px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 bg-transparent border-0 cursor-pointer transition-all hover:bg-gray-100 hover:text-gray-900 touch-manipulation; }
+  .nav-btn-active { @apply bg-green-50 text-green-700 font-semibold; }
+
+  /* ── Mobile bottom nav ── */
+  .mobile-nav-btn {
+    @apply flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl text-[10px] font-semibold
+           text-gray-500 transition-all active:scale-95 touch-manipulation border-0 bg-transparent cursor-pointer;
+  }
+  .mobile-nav-btn-active { @apply text-green-700; }
+
+  /* ── Typography ── */
+  .section-label   { @apply text-[10px] font-bold uppercase tracking-widest text-green-700 mb-1; }
+  .section-heading { @apply font-serif text-2xl sm:text-3xl font-bold text-gray-900 mb-1; }
+  .section-sub     { @apply text-sm text-gray-500 mb-5; }
+
+  /* ── Stat cards ── */
+  .stat-card { @apply bg-white border border-gray-200 rounded-xl p-3 sm:p-4; }
+
+  /* ── Form ── */
+  .form-label         { @apply text-xs font-bold text-gray-700 mb-1 block; }
+  .form-section-title { @apply text-sm font-bold text-gray-700 mb-3 pb-2 border-b border-gray-100 flex items-center gap-2; }
+
+  /* ── Safe area padding for devices with notch/home indicator ── */
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .safe-top    { padding-top: env(safe-area-inset-top, 0px); }
+}
