@@ -2,8 +2,8 @@ import { useState } from 'react'
 import type { FC } from 'react'
 import type { Crop, CropCategory, Lang, SortOption, Translations } from '@/types'
 import crops from '@/data/crops'
-import CropCard from './CropCard'
-import CropModal from './CropModal'
+import CropCard from '../components/CropCard'
+import CropModal from '../components/CropModal'
 
 interface BrowsePageProps {
   lang: Lang
